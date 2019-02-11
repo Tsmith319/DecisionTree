@@ -1,3 +1,6 @@
+#Taylor Smith
+#U0741392
+
 import math
 
 class Node:
@@ -9,26 +12,6 @@ class Node:
 
 	def addBranch(self, branchName, childNode):
 		self.branches[branchName] = childNode
-
-	def printTree(self, indent, last):
-		print(indent),
-		if(bool(last) == bool(True)):
-			print("\\-"),
-			indent += "  "
-		else:
-			print("|-"),
-			indent += "|    "
-
-		if(self.splitVal == None):
-			print(self.label)
-		if(self.label == None):
-			print(self.splitVal)
-		# print(self.treeDepth)
-		count = 0
-		for branch in self.branches.keys():
-			currBranch = self.branches[branch]
-			currBranch.printTree(indent, bool(count == (len(self.branches.keys()) - 1)))
-			count += 1
 
 def openFile(filename, attributes):
 	f = open(filename, 'r')

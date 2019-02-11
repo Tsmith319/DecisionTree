@@ -1,3 +1,6 @@
+#Taylor Smith
+#U0741392
+
 import math
 import copy
 
@@ -10,26 +13,6 @@ class Node:
 
 	def addBranch(self, branchName, childNode):
 		self.branches[branchName] = childNode
-
-	def printTree(self, indent, last):
-		print(indent),
-		if(bool(last) == bool(True)):
-			print("\\-"),
-			indent += "  "
-		else:
-			print("|-"),
-			indent += "|    "
-
-		if(self.splitVal == None):
-			print(self.label)
-		if(self.label == None):
-			print(self.splitVal)
-		# print(self.treeDepth)
-		count = 0
-		for branch in self.branches.keys():
-			currBranch = self.branches[branch]
-			currBranch.printTree(indent, bool(count == (len(self.branches.keys()) - 1)))
-			count += 1
 
 def openFile(filename, attributes, attributeDict, unknownType):
 	f = open(filename, 'r')
@@ -444,7 +427,6 @@ def main():
 				informationGainType += 1
 
 			treeDepths[currMaxDepth] = accuracyDict
-			print("Current Depth: " + str(currMaxDepth))
 			currMaxDepth += 1
 		print(treeDepths.items())
 		unknownType += 1
