@@ -14,7 +14,7 @@ class Node:
 	def addBranch(self, branchName, childNode):
 		self.branches[branchName] = childNode
 
-def openFile(filename, attributes, attributeDict, unknownType):
+def openFile(filename, attributes, attributeDict, numericalAttributes, unknownType):
 	f = open(filename, 'r')
 
 	dataSet = list()
@@ -30,7 +30,11 @@ def openFile(filename, attributes, attributeDict, unknownType):
 		for term in terms:
 			if count < 16:
 				currExample[attributes[count]] = term
-				if term != "unknown" and unknownType == 1:
+
+				if attributes[count] in numericalAttributes:
+					attributeValDict[attributes[count]].add("yes")
+					attributeValDict[attributes[count]].add("no")
+				elif term != "unknown" and unknownType == 1:
 					attributeValDict[attributes[count]].add(term)
 				else:
 					attributeValDict[attributes[count]].add(term)
@@ -42,6 +46,35 @@ def openFile(filename, attributes, attributeDict, unknownType):
 		labels.insert(index, currLabel)
 		index = index + 1
 	return (dataSet, labels, attributeValDict)
+
+def findNumericalAttributeValues(S, numericalAttributes):
+	attributeValCounts = {}
+	for example in S:
+		for numerical in numericalAttributes:
+			if numerical in attributeValCounts.keys():
+				attributeValCounts[numerical].append(int(example[numerical]))
+			else:
+				attributeValCounts[numerical] = list()
+				attributeValCounts[numerical].append(int(example[numerical]))
+
+	attributeThresholds = {}
+	for attribute in attributeValCounts.keys():
+		sortedList = attributeValCounts[attribute]
+		sortedList.sort()
+		medianIndex = len(sortedList)/2
+		attributeThresholds[attribute] = sortedList[medianIndex]
+
+	for example in S:
+		for attribute in numericalAttributes:
+			if int(example[attribute]) > attributeThresholds[attribute]:
+				example[attribute] = "yes"
+			elif int(example[attribute]) <= attributeThresholds[attribute]:
+				example[attribute] = "no"
+
+	return S
+
+
+
 
 def findUnknownAttributeValues(S, unknownAttributes):
 	attributeValCounts = {}
@@ -354,19 +387,15 @@ def traverseTree(example, Attributes, Tree, labelOutcomes):
 
 	
 	currBranch = example[Tree.splitVal]
-	if currBranch in Tree.branches.keys():
-		newTree = Tree.branches[currBranch]
-		newAttributes = list(Attributes)
-		newAttributes.remove(Tree.splitVal)
-		traverseTree(example, newAttributes, newTree, labelOutcomes)
-	else:
-		if(len(labelOutcomes) != 0):
-			labelOutcomes.append(mostCommonLabel(labelOutcomes))
-		else: 
-			labelOutcomes.append("no")
-		return labelOutcomes
+	newTree = Tree.branches[currBranch]
+	newAttributes = list(Attributes)
+	newAttributes.remove(Tree.splitVal)
+	traverseTree(example, newAttributes, newTree, labelOutcomes)
+
+	return labelOutcomes
 
 def main():
+	numericalAttributes = ["age", "balance", "day", "duration", "campaign", "pdays", "previous"]
 
 	unknownAttributes = ["job","education","contact","poutcome"]
 
@@ -394,8 +423,10 @@ def main():
 	
 	unknownType = 0
 	while unknownType < 2:
-		trainingDataSet, trainingLabels, trainingAttributeDict = openFile("train.csv", attributes, attributeDict, unknownType)
-		testingDataSet, testingLabels, testingAttributeDict = openFile("test.csv", attributes, attributeDict, unknownType)
+		trainingDataSet, trainingLabels, trainingAttributeDict = openFile("train.csv", attributes, attributeDict, numericalAttributes, unknownType)
+		trainingDataSet = findNumericalAttributeValues(trainingDataSet, numericalAttributes)
+		testingDataSet, testingLabels, testingAttributeDict = openFile("test.csv", attributes, attributeDict, numericalAttributes, unknownType)
+		testingDataSet = findNumericalAttributeValues(testingDataSet, numericalAttributes)
 		if unknownType == 1:
 			print("Unknown is treated as Missing Data")
 			trainingDataSet = findUnknownAttributeValues(trainingDataSet, unknownAttributes)
@@ -427,6 +458,7 @@ def main():
 				informationGainType += 1
 
 			treeDepths[currMaxDepth] = accuracyDict
+			print("current tree depth: " + str(currMaxDepth))
 			currMaxDepth += 1
 		print(treeDepths.items())
 		unknownType += 1
