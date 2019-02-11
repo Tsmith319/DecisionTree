@@ -1,19 +1,5 @@
 import math
 
-dataSet = list()
-attributes = ["buying","maint","doors","persons","lug_boot","safety"]
-
-attributeDict = {
-	"buying": ["vhigh", "high", "med", "low"], 
-	"maint": ["vhigh", "high", "med", "low"], 
-	"doors": ["2", "3", "4", "5more"], 
-	"persons": ["2", "4", "more"], 
-	"lug_boot": ["small", "med", "big"], 
-	"safety": ["low", "med", "high"]
-}
-
-labels = list()
-
 class Node:
 	def __init__(self, splitVal, treeDepth, label):
 		self.splitVal = splitVal
@@ -24,7 +10,7 @@ class Node:
 	def addBranch(self, branchName, childNode):
 		self.branches[branchName] = childNode
 
-	def printPretty(self, indent, last):
+	def printTree(self, indent, last):
 		print(indent),
 		if(bool(last) == bool(True)):
 			print("\\-"),
@@ -37,15 +23,18 @@ class Node:
 			print(self.label)
 		if(self.label == None):
 			print(self.splitVal)
-
+		# print(self.treeDepth)
 		count = 0
 		for branch in self.branches.keys():
 			currBranch = self.branches[branch]
-			currBranch.printPretty(indent, bool(count == (len(self.branches.keys()) - 1)))
+			currBranch.printTree(indent, bool(count == (len(self.branches.keys()) - 1)))
 			count += 1
 
-def openFile(filename):
+def openFile(filename, attributes):
 	f = open(filename, 'r')
+
+	dataSet = list()
+	labels = list()
 
 	index = 0
 	for line in f:
@@ -63,6 +52,7 @@ def openFile(filename):
 		dataSet.append(currExample)
 		labels.insert(index, currLabel)
 		index = index + 1
+	return (dataSet, labels)
 
 def mostCommonLabel(labels):
 
@@ -104,7 +94,7 @@ def checkAllLabelsAreEqual(labels):
 	returnVal["equal"] = "true"	
 	return returnVal
 
-def ID3(S, Attributes, attributeValues, Labels, currentDepth):
+def ID3(S, Attributes, attributeValues, Labels, currentDepth, maxDepth, informationGain):
 	
 	allLabelsEqual = checkAllLabelsAreEqual(Labels)
 	if allLabelsEqual["equal"] == "true":
@@ -113,14 +103,17 @@ def ID3(S, Attributes, attributeValues, Labels, currentDepth):
 	if len(Attributes) == 0:
 		return Node(None, currentDepth, mostCommonLabel(Labels))
 
+	if currentDepth == maxDepth:
+		return Node(None, currentDepth, mostCommonLabel(Labels))
+
 	rootNode = Node(None, currentDepth, None)
 
-	#splitAttribute = calculateSplitValueWithEntropy(S, Attributes, attributeValues, Labels)
-
-	# splitAttribute = calculateSplitValueWithMajorityError(S, Attributes, attributeValues, Labels)
-	# print(str(splitAttribute))
-
-	splitAttribute = calculateSplitValueWithGiniIndex(S, Attributes, attributeValues, Labels)
+	if informationGain == 0:
+		splitAttribute = calculateSplitValueWithEntropy(S, Attributes, attributeValues, Labels)
+	if informationGain == 1:
+		splitAttribute = calculateSplitValueWithMajorityError(S, Attributes, attributeValues, Labels)
+	if informationGain == 2:	
+		splitAttribute = calculateSplitValueWithGiniIndex(S, Attributes, attributeValues, Labels)
 
 	rootNode.splitVal = splitAttribute
 
@@ -135,7 +128,7 @@ def ID3(S, Attributes, attributeValues, Labels, currentDepth):
 		else:
 			newAttributes = list(Attributes)
 			newAttributes.remove(splitAttribute)
-			branchNode = ID3(subset, newAttributes, attributeValues, subListLabels, currentDepth + 1)
+			branchNode = ID3(subset, newAttributes, attributeValues, subListLabels, currentDepth + 1, maxDepth, informationGain)
 		rootNode.addBranch(val, branchNode)
 
 	return rootNode
@@ -187,7 +180,7 @@ def calculateSplitValueWithEntropy(S, attributes, attributeValues, labels):
 			for label in attributeValLabelCounts.keys():
 				attributeValLabelCounts[label] = float(attributeValLabelCounts[label]) / totalLabelCount
 				attributeValEntropy += (-((attributeValLabelCounts[label]) * (math.log(attributeValLabelCounts[label], 2))))
-			totalAttributeEntropy += (attributeValEntropy * (float(totalLabelCount)/len(S)))
+			totalAttributeEntropy += (attributeValEntropy * (abs(float(totalLabelCount))/abs(len(S))))
 		attributeEntropies[attribute] = totalEntropy - totalAttributeEntropy
 
 	bestEntropy = 0
@@ -210,12 +203,7 @@ def calculateSplitValueWithMajorityError(S, attributes, attributeValues, labels)
 			labelCounts[label] = 1
 
 	totalMajorityError = float(min(labelCounts.values()))/len(S)
-	print("total ME")
-	print(totalMajorityError)
-	print("Attributes")
-	print(attributes)
-	print("labels")
-	print(labels)
+
 	attributeMajorityErrors = {}
 	for attribute in attributes:
 		totalAttributeMajorityError = 0
@@ -234,18 +222,12 @@ def calculateSplitValueWithMajorityError(S, attributes, attributeValues, labels)
 			for label in attributeValLabelCounts.keys():
 				totalLabelCount += attributeValLabelCounts[label]
 
-			print("Counts")
-			print(attributeValLabelCounts.items())
-			print(totalLabelCount)
 			if totalLabelCount != 0:
-				attributeValMajorityError = float(min(attributeValLabelCounts.values()))/totalLabelCount
+				attributeValMajorityError = 1 - (float(max(attributeValLabelCounts.values()))/totalLabelCount)
 			else:
 				attributeValMajorityError = 0
-				
-			print(attributeValMajorityError)
-			totalAttributeMajorityError += (attributeValMajorityError * (float(totalLabelCount) / len(S)))
-			print("Total attr ME: ")
-			print(totalAttributeMajorityError)
+
+			totalAttributeMajorityError += (attributeValMajorityError * (abs(float(totalLabelCount)) / abs(len(S))))
 
 		if((totalMajorityError - totalAttributeMajorityError) < 0):
 			attributeMajorityErrors[attribute] = 0
@@ -263,8 +245,6 @@ def calculateSplitValueWithMajorityError(S, attributes, attributeValues, labels)
 		elif attributeMajorityErrors[attribute] > bestMajorityError:
 			bestMajorityError = attributeMajorityErrors[attribute]
 			splitAttribute = attribute
-	print("Total Counts")
-	print(attributeMajorityErrors.items())
 
 	return splitAttribute
 
@@ -303,7 +283,7 @@ def calculateSplitValueWithGiniIndex(S, attributes, attributeValues, labels):
 				totalLabelCount += attributeValLabelCounts[label]
 			for value in attributeValLabelCounts.values():
 				attributeValGiniIndex += (float(value)/totalLabelCount)**2
-			totalAttributeGiniIndex += ((1 - attributeValGiniIndex) * (float(totalLabelCount) / len(S)))
+			totalAttributeGiniIndex += ((1 - attributeValGiniIndex) * (abs(float(totalLabelCount)) / abs(len(S))))
 		attributeGiniIndex[attribute] = totalGiniIndex - totalAttributeGiniIndex
 
 	bestGiniIndex = 0
@@ -315,12 +295,76 @@ def calculateSplitValueWithGiniIndex(S, attributes, attributeValues, labels):
 
 	return splitAttribute
 
-openFile("train.csv")
-node = ID3(dataSet, attributes, attributeDict, labels, 0)
-print(bool(True))
-node.printPretty("", bool(True))
+def makePrediction(S, Attributes, Tree, labels):
 
-for branch in node.branches.keys():
-	print("branch name: " + branch)
-	print(str(node.branches[branch].splitVal))
+	labelOutcomes = list()
+	for example in S:
+		traverseTree(example, Attributes, Tree, labelOutcomes)
 
+	count = 0
+	correctCount = 0
+	for label in labelOutcomes:
+		if label == labels[count]:
+			correctCount += 1
+		count += 1
+
+	accuracy = float(correctCount) / len(labels)
+	return accuracy
+
+def traverseTree(example, Attributes, Tree, labelOutcomes):
+
+	if (len(Tree.branches) == 0) or (len(Attributes) == 0):
+		labelOutcomes.append(Tree.label)
+		return labelOutcomes
+
+	currBranch = example[Tree.splitVal]
+	newTree = Tree.branches[currBranch]
+	newAttributes = list(Attributes)
+	newAttributes.remove(Tree.splitVal)
+	traverseTree(example, newAttributes, newTree, labelOutcomes)
+
+def main():
+
+	attributes = ["buying","maint","doors","persons","lug_boot","safety"]
+
+	attributeDict = {
+		"buying": ["vhigh", "high", "med", "low"], 
+		"maint": ["vhigh", "high", "med", "low"], 
+		"doors": ["2", "3", "4", "5more"], 
+		"persons": ["2", "4", "more"], 
+		"lug_boot": ["small", "med", "big"], 
+		"safety": ["low", "med", "high"]
+	}
+
+	treeDepths = {}
+	currMaxDepth = 1
+	while currMaxDepth < 7:
+		informationGainType = 0
+		accuracyDict = {}
+		while informationGainType < 3:
+			accuracyList = list()
+			informationGainKey = None
+			if informationGainType == 0:
+				informationGainKey = "Entropy"
+			if informationGainType == 1:
+				informationGainKey = "Majority Error"
+			if informationGainType == 2:
+				informationGainKey = "Gini Index"
+			accuracyDict[informationGainKey] = accuracyList
+
+			trainingDataSet, trainingLabels = openFile("train.csv", attributes)
+			node = ID3(trainingDataSet, attributes, attributeDict, trainingLabels, 0, currMaxDepth, informationGainType)
+			trainingAccuracy = makePrediction(trainingDataSet, attributes, node, trainingLabels)
+			accuracyDict[informationGainKey].append(trainingAccuracy)
+
+			testingDataSet, testingLabels = openFile("test.csv", attributes)
+			testingAccuracy = makePrediction(testingDataSet, attributes, node, testingLabels)
+			accuracyDict[informationGainKey].append(testingAccuracy)
+			informationGainType += 1
+
+		treeDepths[currMaxDepth] = accuracyDict
+		currMaxDepth += 1
+	print(treeDepths.items())
+
+if __name__=="__main__":
+	main()
