@@ -11,38 +11,8 @@ The file bankID3 contains the implementation of ID3 specicifically for the data 
 
 Unknown is treated as Data
 
-[(1, {'Majority Error': [0.9284, 0.8268], 'Entropy': [0.9284, 0.8268], 'Gini Index': [0.9284, 0.8268]}), 
-(2, {'Majority Error': [0.9996, 0.8294], 'Entropy': [0.9996, 0.8294], 'Gini Index': [0.9996, 0.8294]}), 
-(3, {'Majority Error': [1.0, 0.8294], 'Entropy': [1.0, 0.8294], 'Gini Index': [1.0, 0.8294]}), 
-(4, {'Majority Error': [1.0, 0.8294], 'Entropy': [1.0, 0.8294], 'Gini Index': [1.0, 0.8294]}), 
-(5, {'Majority Error': [1.0, 0.8294], 'Entropy': [1.0, 0.8294], 'Gini Index': [1.0, 0.8294]}), 
-(6, {'Majority Error': [1.0, 0.8294], 'Entropy': [1.0, 0.8294], 'Gini Index': [1.0, 0.8294]}), 
-(7, {'Majority Error': [1.0, 0.8294], 'Entropy': [1.0, 0.8294], 'Gini Index': [1.0, 0.8294]}), 
-(8, {'Majority Error': [1.0, 0.8294], 'Entropy': [1.0, 0.8294], 'Gini Index': [1.0, 0.8294]}), 
-(9, {'Majority Error': [1.0, 0.8294], 'Entropy': [1.0, 0.8294], 'Gini Index': [1.0, 0.8294]}), 
-(10, {'Majority Error': [1.0, 0.8294], 'Entropy': [1.0, 0.8294], 'Gini Index': [1.0, 0.8294]}), 
-(11, {'Majority Error': [1.0, 0.8294], 'Entropy': [1.0, 0.8294], 'Gini Index': [1.0, 0.8294]}), 
-(12, {'Majority Error': [1.0, 0.8294], 'Entropy': [1.0, 0.8294], 'Gini Index': [1.0, 0.8294]}), 
-(13, {'Majority Error': [1.0, 0.8294], 'Entropy': [1.0, 0.8294], 'Gini Index': [1.0, 0.8294]}), 
-(14, {'Majority Error': [1.0, 0.8294], 'Entropy': [1.0, 0.8294], 'Gini Index': [1.0, 0.8294]}), 
-(15, {'Majority Error': [1.0, 0.8294], 'Entropy': [1.0, 0.8294], 'Gini Index': [1.0, 0.8294]}), 
-(16, {'Majority Error': [1.0, 0.8294], 'Entropy': [1.0, 0.8294], 'Gini Index': [1.0, 0.8294]})]
+[(1, {'Majority Error': [0.8912, 0.8834], 'Entropy': [0.8808, 0.8752], 'Gini Index': [0.8912, 0.8834]}), (2, {'Majority Error': [0.8958, 0.8912], 'Entropy': [0.894, 0.8886], 'Gini Index': [0.8948, 0.8896]}), (3, {'Majority Error': [0.9036, 0.8878], 'Entropy': [0.899, 0.89], 'Gini Index': [0.9036, 0.8876]}), (4, {'Majority Error': [0.9156, 0.8836], 'Entropy': [0.9204, 0.883], 'Gini Index': [0.922, 0.877]}), (5, {'Majority Error': [0.9246, 0.881], 'Entropy': [0.9364, 0.8712], 'Gini Index': [0.9362, 0.8698]}), (6, {'Majority Error': [0.9314, 0.8778], 'Entropy': [0.9502, 0.863], 'Gini Index': [0.947, 0.8554]}), (7, {'Majority Error': [0.9396, 0.8776], 'Entropy': [0.9574, 0.8516], 'Gini Index': [0.9594, 0.8454]}), (8, {'Majority Error': [0.9456, 0.8762], 'Entropy': [0.968, 0.8462], 'Gini Index': [0.9708, 0.8404]}), (9, {'Majority Error': [0.9504, 0.872], 'Entropy': [0.9718, 0.8392], 'Gini Index': [0.9746, 0.8354]}), (10, {'Majority Error': [0.9544, 0.8694], 'Entropy': [0.9784, 0.838], 'Gini Index': [0.9806, 0.8338]}), (11, {'Majority Error': [0.9584, 0.8642], 'Entropy': [0.9836, 0.8392], 'Gini Index': [0.984, 0.8346]}), (12, {'Majority Error': [0.9642, 0.8588], 'Entropy': [0.9848, 0.8392], 'Gini Index': [0.9846, 0.8344]}), (13, {'Majority Error': [0.9702, 0.8492], 'Entropy': [0.985, 0.8392], 'Gini Index': [0.985, 0.8344]}), (14, {'Majority Error': [0.9762, 0.8402], 'Entropy': [0.985, 0.8392], 'Gini Index': [0.985, 0.8344]}), (15, {'Majority Error': [0.9812, 0.8386], 'Entropy': [0.985, 0.8392], 'Gini Index': [0.985, 0.8344]}), (16, {'Majority Error': [0.985, 0.84], 'Entropy': [0.985, 0.8392], 'Gini Index': [0.985, 0.8344]})]
 
 Unknown is treated as Missing Data
 
-[(1, {'Majority Error': [0.9284, 0.8268], 'Entropy': [0.9284, 0.8268], 'Gini Index': [0.9284, 0.8268]}), 
-(2, {'Majority Error': [0.9996, 0.828], 'Entropy': [0.9996, 0.828], 'Gini Index': [0.9996, 0.828]}), 
-(3, {'Majority Error': [1.0, 0.828], 'Entropy': [1.0, 0.828], 'Gini Index': [1.0, 0.828]}), 
-(4, {'Majority Error': [1.0, 0.828], 'Entropy': [1.0, 0.828], 'Gini Index': [1.0, 0.828]}), 
-(5, {'Majority Error': [1.0, 0.828], 'Entropy': [1.0, 0.828], 'Gini Index': [1.0, 0.828]}), 
-(6, {'Majority Error': [1.0, 0.828], 'Entropy': [1.0, 0.828], 'Gini Index': [1.0, 0.828]}), 
-(7, {'Majority Error': [1.0, 0.828], 'Entropy': [1.0, 0.828], 'Gini Index': [1.0, 0.828]}), 
-(8, {'Majority Error': [1.0, 0.828], 'Entropy': [1.0, 0.828], 'Gini Index': [1.0, 0.828]}), 
-(9, {'Majority Error': [1.0, 0.828], 'Entropy': [1.0, 0.828], 'Gini Index': [1.0, 0.828]}), 
-(10, {'Majority Error': [1.0, 0.828], 'Entropy': [1.0, 0.828], 'Gini Index': [1.0, 0.828]}), 
-(11, {'Majority Error': [1.0, 0.828], 'Entropy': [1.0, 0.828], 'Gini Index': [1.0, 0.828]}), 
-(12, {'Majority Error': [1.0, 0.828], 'Entropy': [1.0, 0.828], 'Gini Index': [1.0, 0.828]}), 
-(13, {'Majority Error': [1.0, 0.828], 'Entropy': [1.0, 0.828], 'Gini Index': [1.0, 0.828]}), 
-(14, {'Majority Error': [1.0, 0.828], 'Entropy': [1.0, 0.828], 'Gini Index': [1.0, 0.828]}), 
-(15, {'Majority Error': [1.0, 0.828], 'Entropy': [1.0, 0.828], 'Gini Index': [1.0, 0.828]}), 
-(16, {'Majority Error': [1.0, 0.828], 'Entropy': [1.0, 0.828], 'Gini Index': [1.0, 0.828]})]
+[(1, {'Majority Error': [0.8912, 0.8834], 'Entropy': [0.8808, 0.8752], 'Gini Index': [0.8912, 0.8834]}), (2, {'Majority Error': [0.895, 0.8898], 'Entropy': [0.894, 0.8886], 'Gini Index': [0.8948, 0.8896]}), (3, {'Majority Error': [0.9024, 0.8848], 'Entropy': [0.8974, 0.8902], 'Gini Index': [0.899, 0.8914]}), (4, {'Majority Error': [0.9134, 0.882], 'Entropy': [0.9122, 0.8772], 'Gini Index': [0.911, 0.8776]}), (5, {'Majority Error': [0.9202, 0.883], 'Entropy': [0.93, 0.8702], 'Gini Index': [0.9274, 0.871]}), (6, {'Majority Error': [0.9248, 0.8792], 'Entropy': [0.9424, 0.8632], 'Gini Index': [0.9424, 0.8664]}), (7, {'Majority Error': [0.9292, 0.8724], 'Entropy': [0.9474, 0.8502], 'Gini Index': [0.9496, 0.847]}), (8, {'Majority Error': [0.937, 0.8684], 'Entropy': [0.9558, 0.848], 'Gini Index': [0.957, 0.8446]}), (9, {'Majority Error': [0.9426, 0.8632], 'Entropy': [0.9638, 0.8392], 'Gini Index': [0.9646, 0.8404]}), (10, {'Majority Error': [0.9486, 0.8544], 'Entropy': [0.9706, 0.8408], 'Gini Index': [0.9716, 0.8386]}), (11, {'Majority Error': [0.9564, 0.8496], 'Entropy': [0.9764, 0.8404], 'Gini Index': [0.9764, 0.8382]}), (12, {'Majority Error': [0.9592, 0.8444], 'Entropy': [0.9784, 0.8402], 'Gini Index': [0.9784, 0.8384]}), (13, {'Majority Error': [0.9628, 0.8396], 'Entropy': [0.9788, 0.8402], 'Gini Index': [0.9788, 0.8384]}), (14, {'Majority Error': [0.9678, 0.8338], 'Entropy': [0.9788, 0.8402], 'Gini Index': [0.9788, 0.8384]}), (15, {'Majority Error': [0.9736, 0.8316], 'Entropy': [0.9788, 0.8402], 'Gini Index': [0.9788, 0.8384]}), (16, {'Majority Error': [0.9788, 0.8332], 'Entropy': [0.9788, 0.8402], 'Gini Index': [0.9788, 0.8384]})]
