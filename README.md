@@ -8,17 +8,29 @@ To run the program successfully you need to run it on the CADE machines and make
 The file carID3 contains the implementation of ID3 specifically for the data provided in car.zip under the name carID3.py. When ran, the program will print out the data the data in the format presented below for each type of approach for splitting the data set with the first index being the accuracy of the training data at the listed tree depth and the second index represents the testing accuracy of the training data. 
 
 Running Car Data with ID3 algorithm
+
 Current Tree Depth: 1
+
 {'Majority Error': [0.698, 0.7032967032967034], 'Entropy': [0.698, 0.7032967032967034], 'Gini Index': [0.698, 0.7032967032967034]}
+
 Current Tree Depth: 2
+
 {'Majority Error': [0.698, 0.7032967032967034], 'Entropy': [0.778, 0.7774725274725275], 'Gini Index': [0.778, 0.7774725274725275]}
+
 Current Tree Depth: 3
+
 {'Majority Error': [0.719, 0.6689560439560439], 'Entropy': [0.819, 0.8035714285714286], 'Gini Index': [0.824, 0.8159340659340659]}
+
 Current Tree Depth: 4
+
 {'Majority Error': [0.857, 0.7980769230769231], 'Entropy': [0.918, 0.8489010989010989], 'Gini Index': [0.911, 0.8626373626373627]}
+
 Current Tree Depth: 5
+
 {'Majority Error': [0.963, 0.9107142857142857], 'Entropy': [0.973, 0.9162087912087912], 'Gini Index': [0.973, 0.9162087912087912]}
+
 Current Tree Depth: 6
+
 {'Majority Error': [1.0, 0.9107142857142857], 'Entropy': [1.0, 0.9162087912087912], 'Gini Index': [1.0, 0.9162087912087912]}
 
 
