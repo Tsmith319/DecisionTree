@@ -3,6 +3,9 @@
 
 import math
 
+# Node Class that contains the nodes of the decision tree such as its children nodes. If the node is a root node it will have a label and its split val is
+# None and if it is a node of the tree or a root node, label = None and splitVal = the name of the current split in the node. The tree also contains the current
+# tree depth of the node. 
 class Node:
 	def __init__(self, splitVal, treeDepth, label):
 		self.splitVal = splitVal
@@ -13,6 +16,7 @@ class Node:
 	def addBranch(self, branchName, childNode):
 		self.branches[branchName] = childNode
 
+# Creates a data set, list of labels, and a dictionary of the each attributes' values based upon the given file name.
 def openFile(filename, attributes):
 	f = open(filename, 'r')
 
@@ -37,6 +41,7 @@ def openFile(filename, attributes):
 		index = index + 1
 	return (dataSet, labels)
 
+#Finds the most common label of the current data set.
 def mostCommonLabel(labels):
 
 	labelDictionary = {}
@@ -57,6 +62,7 @@ def mostCommonLabel(labels):
 
 	return commonLabel
 
+#Goes through all the labels in the current data set to check if all the labels are equal.
 def checkAllLabelsAreEqual(labels):
 	count = 0
 	label = None
@@ -77,6 +83,9 @@ def checkAllLabelsAreEqual(labels):
 	returnVal["equal"] = "true"	
 	return returnVal
 
+# Creates a decision tree that splits the data in data set S using the Attributes list, as well as their values in attributeValues. Using the labels as well to accurately split the data using 
+# majority error, gini index, and entropy. Based on whether informationGain equalling 1, 2 , or 3 will call one of the splitting algorithm functions as well the user can set the tree depth of the tree
+# by setting the maxDepth value when calling the function.
 def ID3(S, Attributes, attributeValues, Labels, currentDepth, maxDepth, informationGain):
 	
 	allLabelsEqual = checkAllLabelsAreEqual(Labels)
@@ -116,6 +125,7 @@ def ID3(S, Attributes, attributeValues, Labels, currentDepth, maxDepth, informat
 
 	return rootNode
 
+#Creates a subset of S based upon the attribute splitting value "val"
 def createSubset(S, splitVal, val, labels):
 	subset = []
 	
@@ -128,6 +138,7 @@ def createSubset(S, splitVal, val, labels):
 			copyOfLabels.append(labels[indexOfLabel])
 	return (subset, copyOfLabels)
 
+# Finds the best splitting attribute based upon the given data set S using entropy approach.
 def calculateSplitValueWithEntropy(S, attributes, attributeValues, labels):
 
 	labelCounts = {}
@@ -175,7 +186,7 @@ def calculateSplitValueWithEntropy(S, attributes, attributeValues, labels):
 
 	return splitAttribute
 
-
+# Finds the best splitting value using the majority error approach based upon the given data set S
 def calculateSplitValueWithMajorityError(S, attributes, attributeValues, labels):
 
 	labelCounts = {}
@@ -231,6 +242,7 @@ def calculateSplitValueWithMajorityError(S, attributes, attributeValues, labels)
 
 	return splitAttribute
 
+# Finds the best splitting value by using the gini index approach based upon the given data set S
 def calculateSplitValueWithGiniIndex(S, attributes, attributeValues, labels):
 
 	labelCounts = {}
@@ -278,6 +290,8 @@ def calculateSplitValueWithGiniIndex(S, attributes, attributeValues, labels):
 
 	return splitAttribute
 
+# Will go through each example given in S and recursively traverse the tree and find whether each label matches the out come of the tree and return the accuracy of
+# the number of correctly predicted labels over the total number of labels.
 def makePrediction(S, Attributes, Tree, labels):
 
 	labelOutcomes = list()
@@ -294,6 +308,7 @@ def makePrediction(S, Attributes, Tree, labels):
 	accuracy = float(correctCount) / len(labels)
 	return accuracy
 
+# Takes in an example of the data set and recursively traverses the tree to its leaf nodes.
 def traverseTree(example, Attributes, Tree, labelOutcomes):
 
 	if (len(Tree.branches) == 0) or (len(Attributes) == 0):
@@ -306,6 +321,11 @@ def traverseTree(example, Attributes, Tree, labelOutcomes):
 	newAttributes.remove(Tree.splitVal)
 	traverseTree(example, newAttributes, newTree, labelOutcomes)
 
+# Main function that gathers all the data in train.csv and test.csv and converts it to a data set, and a list of labels. It will then run the ID3 algorithm on 
+#training data with tree depths ranging from 1 to 6 and will run this algorithm and will construct a tree with current given depth. Once the algorithm has completed 
+# building the tree, the program will use the makePredictions method and pass in the training and testing data sets in order to find the number of correct predictions 
+#over the total number of labels given in the data set. And will print out the accuracies for each splitting attribute approach (entropy, majority error, and gini index)
+# along with the corresponding depth of the tree. 
 def main():
 
 	attributes = ["buying","maint","doors","persons","lug_boot","safety"]
@@ -347,7 +367,10 @@ def main():
 
 		treeDepths[currMaxDepth] = accuracyDict
 		currMaxDepth += 1
-	print(treeDepths.items())
+	
+	for tree in treeDepths.keys():
+		print("Current Tree Depth: " + str(tree))
+		print(treeDepths[tree])
 
 if __name__=="__main__":
 	main()

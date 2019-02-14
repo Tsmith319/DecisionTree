@@ -4,6 +4,9 @@
 import math
 import copy
 
+# Node Class that contains the nodes of the decision tree such as its children nodes. If the node is a root node it will have a label and its split val is
+# None and if it is a node of the tree or a root node, label = None and splitVal = the name of the current split in the node. The tree also contains the current
+# tree depth of the node. 
 class Node:
 	def __init__(self, splitVal, treeDepth, label):
 		self.splitVal = splitVal
@@ -14,6 +17,8 @@ class Node:
 	def addBranch(self, branchName, childNode):
 		self.branches[branchName] = childNode
 
+# Creates a data set, list of labels, and a dictionary of the each attributes' values based upon the given file name. If unknownType = 1 then we treat any unknown attribute values as missing data otherwise
+# they are treated as part of the data set. 
 def openFile(filename, attributes, attributeDict, numericalAttributes, unknownType):
 	f = open(filename, 'r')
 
@@ -47,6 +52,7 @@ def openFile(filename, attributes, attributeDict, numericalAttributes, unknownTy
 		index = index + 1
 	return (dataSet, labels, attributeValDict)
 
+# Converts all of the numberical attribute values to binary and replaces the numerical attribute value with binary values in the dataset S. 
 def findNumericalAttributeValues(S, numericalAttributes):
 	attributeValCounts = {}
 	for example in S:
@@ -73,9 +79,7 @@ def findNumericalAttributeValues(S, numericalAttributes):
 
 	return S
 
-
-
-
+#Finds the majority attribute value for the current unknown attribute value and replaces the unknown attribute value with the majority attribute value in the data set S.
 def findUnknownAttributeValues(S, unknownAttributes):
 	attributeValCounts = {}
 
@@ -122,6 +126,7 @@ def findUnknownAttributeValues(S, unknownAttributes):
 
 	return S
 
+#Finds the most common label of the current data set.
 def mostCommonLabel(labels):
 
 	labelDictionary = {}
@@ -142,6 +147,7 @@ def mostCommonLabel(labels):
 
 	return commonLabel
 
+#Goes through all the labels in the current data set to check if all the labels are equal.
 def checkAllLabelsAreEqual(labels):
 	count = 0
 	label = None
@@ -162,6 +168,9 @@ def checkAllLabelsAreEqual(labels):
 	returnVal["equal"] = "true"	
 	return returnVal
 
+# Creates a decision tree that splits the data in data set S using the Attributes list, as well as their values in attributeValues. Using the labels as well to accurately split the data using 
+# majority error, gini index, and entropy. Based on whether informationGain equalling 1, 2 , or 3 will call one of the splitting algorithm functions as well the user can set the tree depth of the tree
+# by setting the maxDepth value when calling the function. 
 def ID3(S, Attributes, attributeValues, Labels, currentDepth, maxDepth, informationGain):
 	
 	allLabelsEqual = checkAllLabelsAreEqual(Labels)
@@ -201,6 +210,7 @@ def ID3(S, Attributes, attributeValues, Labels, currentDepth, maxDepth, informat
 
 	return rootNode
 
+#Creates a subset of S based upon the attribute splitting value "val"
 def createSubset(S, splitVal, val, labels):
 	subset = []
 	
@@ -213,6 +223,7 @@ def createSubset(S, splitVal, val, labels):
 			copyOfLabels.append(labels[indexOfLabel])
 	return (subset, copyOfLabels)
 
+# Finds the best splitting attribute based upon the given data set S using entropy approach.
 def calculateSplitValueWithEntropy(S, attributes, attributeValues, labels):
 
 	labelCounts = {}
@@ -260,7 +271,7 @@ def calculateSplitValueWithEntropy(S, attributes, attributeValues, labels):
 
 	return splitAttribute
 
-
+# Finds the best splitting value using the majority error approach based upon the given data set S
 def calculateSplitValueWithMajorityError(S, attributes, attributeValues, labels):
 
 	labelCounts = {}
@@ -316,6 +327,7 @@ def calculateSplitValueWithMajorityError(S, attributes, attributeValues, labels)
 
 	return splitAttribute
 
+# Finds the best splitting value by using the gini index approach based upon the given data set S
 def calculateSplitValueWithGiniIndex(S, attributes, attributeValues, labels):
 
 	labelCounts = {}
@@ -363,6 +375,8 @@ def calculateSplitValueWithGiniIndex(S, attributes, attributeValues, labels):
 
 	return splitAttribute
 
+# Will go through each example given in S and recursively traverse the tree and find whether each label matches the out come of the tree and return the accuracy of
+# the number of correctly predicted labels over the total number of labels.
 def makePrediction(S, Attributes, Tree, labels):
 
 	labelOutcomes = list()
@@ -379,6 +393,7 @@ def makePrediction(S, Attributes, Tree, labels):
 	accuracy = float(correctCount) / len(labels)
 	return accuracy
 
+# Takes in an example of the data set and recursively traverses the tree to its leaf nodes.
 def traverseTree(example, Attributes, Tree, labelOutcomes):
 
 	if (len(Tree.branches) == 0) or (len(Attributes) == 0):
@@ -394,13 +409,21 @@ def traverseTree(example, Attributes, Tree, labelOutcomes):
 
 	return labelOutcomes
 
+# Main function that gathers all the data in train.csv and test.csv and converts any missing data if necessary to a certain attribute value as well
+# as change any numerical data to binary if necessary. Will run ID3 algorithm on training data with tree depths ranging from 1 to 16 and will run this algorithm
+# twice, one for having the unknown attribute value as part of the data set and the other as treating unknown as being missing. Once completed building the tree
+# using the makePredictions method we will pass in the training and testing data sets and find the number of correct predictions over the total number of labels 
+# given in the data set.
 def main():
+	# List of attributes that contain numerical data that needs to be converted to binary
 	numericalAttributes = ["age", "balance", "day", "duration", "campaign", "pdays", "previous"]
 
+	# List of attributes that are known to have unknown attribute values
 	unknownAttributes = ["job","education","contact","poutcome"]
 
 	attributes = ["age","job","marital","education","default","balance","housing","loan","contact","day","month","duration","campaign","pdays","previous","poutcome"]
 
+	#Will contain all of the attributes' values for each attribute
 	attributeDict = {
 		"age": set(),
 		"job": set(),
@@ -421,6 +444,9 @@ def main():
 	}
 
 	
+	# Runs the ID3 algorithm twice for treating unknown attribute value as missing and as part of the data set by first opening 
+	#the training and testing files to create the data set and runs the algorithm for tree depths between 1 and 17 and splitting 
+	#the data set using majority error, entropy, and gini index for each depth.
 	unknownType = 0
 	while unknownType < 2:
 		trainingDataSet, trainingLabels, trainingAttributeDict = openFile("train.csv", attributes, attributeDict, numericalAttributes, unknownType)
@@ -458,9 +484,13 @@ def main():
 				informationGainType += 1
 
 			treeDepths[currMaxDepth] = accuracyDict
-			print("current tree depth: " + str(currMaxDepth))
 			currMaxDepth += 1
-		print(treeDepths.items())
+
+		#Prints the entire tree for each depth displaying training and testing accuracies for the tree using majority error, entropy,
+		# and gini index.
+		for tree in treeDepths.keys():
+			print("Current Tree Depth: " + str(tree))
+			print(treeDepths[tree])
 		unknownType += 1
 
 if __name__=="__main__":
