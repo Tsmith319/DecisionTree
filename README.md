@@ -105,3 +105,68 @@ Current Tree Depth: 16
 {'Majority Error': [0.985, 0.84], 'Entropy': [0.985, 0.8392], 'Gini Index': [0.985, 0.8344]}
 
 Unknown is treated as Missing Data
+
+Current Tree Depth: 1
+
+{'Majority Error': [0.8912, 0.8834], 'Entropy': [0.8808, 0.8752], 'Gini Index': [0.8912, 0.8834]}
+
+Current Tree Depth: 2
+
+{'Majority Error': [0.895, 0.8898], 'Entropy': [0.894, 0.8886], 'Gini Index': [0.8948, 0.8896]}
+
+Current Tree Depth: 3
+
+{'Majority Error': [0.9024, 0.8848], 'Entropy': [0.8974, 0.8902], 'Gini Index': [0.899, 0.8914]}
+
+Current Tree Depth: 4
+
+{'Majority Error': [0.9134, 0.882], 'Entropy': [0.9122, 0.8772], 'Gini Index': [0.911, 0.8776]}
+
+Current Tree Depth: 5
+
+{'Majority Error': [0.9202, 0.883], 'Entropy': [0.93, 0.8702], 'Gini Index': [0.9274, 0.871]}
+
+Current Tree Depth: 6
+
+{'Majority Error': [0.9248, 0.8792], 'Entropy': [0.9424, 0.8632], 'Gini Index': [0.9424, 0.8664]}
+
+Current Tree Depth: 7
+
+{'Majority Error': [0.9292, 0.8724], 'Entropy': [0.9474, 0.8502], 'Gini Index': [0.9496, 0.847]}
+
+Current Tree Depth: 8
+
+{'Majority Error': [0.937, 0.8684], 'Entropy': [0.9558, 0.848], 'Gini Index': [0.957, 0.8446]}
+
+Current Tree Depth: 9
+
+{'Majority Error': [0.9426, 0.8632], 'Entropy': [0.9638, 0.8392], 'Gini Index': [0.9646, 0.8404]}
+
+Current Tree Depth: 10
+
+{'Majority Error': [0.9486, 0.8544], 'Entropy': [0.9706, 0.8408], 'Gini Index': [0.9716, 0.8386]}
+
+Current Tree Depth: 11
+
+{'Majority Error': [0.9564, 0.8496], 'Entropy': [0.9764, 0.8404], 'Gini Index': [0.9764, 0.8382]}
+
+Current Tree Depth: 12
+
+{'Majority Error': [0.9592, 0.8444], 'Entropy': [0.9784, 0.8402], 'Gini Index': [0.9784, 0.8384]}
+
+Current Tree Depth: 13
+
+{'Majority Error': [0.9628, 0.8396], 'Entropy': [0.9788, 0.8402], 'Gini Index': [0.9788, 0.8384]}
+
+Current Tree Depth: 14
+
+{'Majority Error': [0.9678, 0.8338], 'Entropy': [0.9788, 0.8402], 'Gini Index': [0.9788, 0.8384]}
+
+Current Tree Depth: 15
+
+{'Majority Error': [0.9736, 0.8316], 'Entropy': [0.9788, 0.8402], 'Gini Index': [0.9788, 0.8384]}
+
+Current Tree Depth: 16
+
+{'Majority Error': [0.9788, 0.8332], 'Entropy': [0.9788, 0.8402], 'Gini Index': [0.9788, 0.8384]}
+
