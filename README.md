@@ -5,6 +5,8 @@ CS5350/6350 in University of Utah
 
 To run the program successfully you need to run it on the CADE machines and make sure you are inside the DecisionTree folder. Once inside the folder you run the algorithm by typing ./shell_script.sh which will run both python folders that are used with car.zip and bank.zip data. The format of the data is explained below. 
 
+NOTE: THE PROGRAM DOES TAKES A SIGNIFICANT TIME TO RUN DUE TO THE SIZE OF THE DATA SET.
+
 The file carID3 contains the implementation of ID3 specifically for the data provided in car.zip under the name carID3.py. When ran, the program will print out the data the data in the format presented below for each type of approach for splitting the data set with the first index being the accuracy of the training data at the listed tree depth and the second index represents the testing accuracy of the training data. 
 
 Running Car Data with ID3 algorithm
