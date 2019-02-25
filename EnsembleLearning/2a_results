@@ -1,0 +1,84 @@
+Decision Stumps Training and Testing Errors:
+{0: [2.3835232953409592e-05, 1.4165493094415535e-05]}
+Training and Testing Errors:
+{0: [0.1192000000000106, 0.05827417909259497]}
+Decision Stumps Training and Testing Errors:
+{800: [9.785158755604845e-06, 1.0244864200497507e-05]}
+Training and Testing Errors:
+{800: [0.07118934791961054, 0.07453381392925462]}
+Decision Stumps Training and Testing Errors:
+{450: [9.785158755604481e-06, 1.0244864200497248e-05]}
+Training and Testing Errors:
+{450: [0.0711893479196082, 0.07453381392925289]}
+Decision Stumps Training and Testing Errors:
+{100: [9.78515875560427e-06, 1.0244864200497261e-05]}
+Training and Testing Errors:
+{100: [0.07118934791960785, 0.07453381392925296]}
+Decision Stumps Training and Testing Errors:
+{950: [9.785158755604224e-06, 1.0244864200496857e-05]}
+Training and Testing Errors:
+{950: [0.07118934791960645, 0.07453381392925035]}
+Decision Stumps Training and Testing Errors:
+{550: [9.785158755604224e-06, 1.0244864200496857e-05]}
+Training and Testing Errors:
+{550: [0.07118934791960645, 0.07453381392925035]}
+Decision Stumps Training and Testing Errors:
+{200: [9.785158755604154e-06, 1.0244864200498324e-05]}
+Training and Testing Errors:
+{200: [0.0711893479196183, 0.07453381392926377]}
+Decision Stumps Training and Testing Errors:
+{650: [9.785158755604009e-06, 1.0244864200497773e-05]}
+Training and Testing Errors:
+{650: [0.07118934791961623, 0.07453381392926016]}
+Decision Stumps Training and Testing Errors:
+{300: [9.785158755603444e-06, 1.0244864200497446e-05]}
+Training and Testing Errors:
+{300: [0.07118934791961254, 0.07453381392925912]}
+Decision Stumps Training and Testing Errors:
+{850: [9.785158755604481e-06, 1.0244864200497248e-05]}
+Training and Testing Errors:
+{850: [0.0711893479196082, 0.07453381392925289]}
+Decision Stumps Training and Testing Errors:
+{750: [9.785158755605045e-06, 1.024486420049771e-05]}
+Training and Testing Errors:
+{750: [0.07118934791961298, 0.07453381392925484]}
+Decision Stumps Training and Testing Errors:
+{400: [9.785158755604845e-06, 1.0244864200497507e-05]}
+Training and Testing Errors:
+{400: [0.07118934791961054, 0.07453381392925462]}
+Decision Stumps Training and Testing Errors:
+{1000: [9.785158755604154e-06, 1.0244864200498324e-05]}
+Training and Testing Errors:
+{1000: [0.0711893479196183, 0.07453381392926377]}
+Decision Stumps Training and Testing Errors:
+{50: [9.78515875560402e-06, 1.0244864200498113e-05]}
+Training and Testing Errors:
+{50: [0.07118934791961633, 0.07453381392926235]}
+Decision Stumps Training and Testing Errors:
+{500: [9.78515875560427e-06, 1.0244864200497261e-05]}
+Training and Testing Errors:
+{500: [0.07118934791960785, 0.07453381392925296]}
+Decision Stumps Training and Testing Errors:
+{150: [9.785158755604224e-06, 1.0244864200496857e-05]}
+Training and Testing Errors:
+{150: [0.07118934791960645, 0.07453381392925035]}
+Decision Stumps Training and Testing Errors:
+{600: [9.785158755604154e-06, 1.0244864200498324e-05]}
+Training and Testing Errors:
+{600: [0.0711893479196183, 0.07453381392926377]}
+Decision Stumps Training and Testing Errors:
+{900: [9.78515875560427e-06, 1.0244864200497261e-05]}
+Training and Testing Errors:
+{900: [0.07118934791960785, 0.07453381392925296]}
+Decision Stumps Training and Testing Errors:
+{250: [9.785158755604009e-06, 1.0244864200497773e-05]}
+Training and Testing Errors:
+{250: [0.07118934791961623, 0.07453381392926016]}
+Decision Stumps Training and Testing Errors:
+{700: [9.785158755603444e-06, 1.0244864200497446e-05]}
+Training and Testing Errors:
+{700: [0.07118934791961254, 0.07453381392925912]}
+Decision Stumps Training and Testing Errors:
+{350: [9.785158755605045e-06, 1.024486420049771e-05]}
+Training and Testing Errors:
+{350: [0.07118934791961298, 0.07453381392925484]}

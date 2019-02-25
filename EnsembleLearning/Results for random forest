@@ -1,0 +1,126 @@
+Subset = 2:
+Current Tree Depth: 0
+{'Entropy': [0.8658, 0.8244]}
+Current Tree Depth: 800
+{'Entropy': [0.9042, 0.8874]}
+Current Tree Depth: 450
+{'Entropy': [0.9044, 0.8872]}
+Current Tree Depth: 100
+{'Entropy': [0.9058, 0.885]}
+Current Tree Depth: 950
+{'Entropy': [0.904, 0.8874]}
+Current Tree Depth: 550
+{'Entropy': [0.9054, 0.8874]}
+Current Tree Depth: 200
+{'Entropy': [0.9058, 0.886]}
+Current Tree Depth: 650
+{'Entropy': [0.9046, 0.8876]}
+Current Tree Depth: 300
+{'Entropy': [0.9056, 0.8864]}
+Current Tree Depth: 850
+{'Entropy': [0.9042, 0.8874]}
+Current Tree Depth: 750
+{'Entropy': [0.9042, 0.8874]}
+Current Tree Depth: 400
+{'Entropy': [0.9052, 0.887]}
+Current Tree Depth: 50
+{'Entropy': [0.9082, 0.8848]}
+Current Tree Depth: 500
+{'Entropy': [0.906, 0.887]}
+Current Tree Depth: 150
+{'Entropy': [0.9056, 0.8862]}
+Current Tree Depth: 600
+{'Entropy': [0.905, 0.8876]}
+Current Tree Depth: 900
+{'Entropy': [0.9042, 0.8874]}
+Current Tree Depth: 250
+{'Entropy': [0.9048, 0.8864]}
+Current Tree Depth: 700
+{'Entropy': [0.9042, 0.8878]}
+Current Tree Depth: 350
+{'Entropy': [0.905, 0.887]}
+
+Subset = 4
+Current Tree Depth: 0
+{'Entropy': [0.8554, 0.8168]}
+Current Tree Depth: 800
+{'Entropy': [0.9086, 0.89]}
+Current Tree Depth: 450
+{'Entropy': [0.9086, 0.8904]}
+Current Tree Depth: 100
+{'Entropy': [0.9094, 0.8914]}
+Current Tree Depth: 950
+{'Entropy': [0.9094, 0.8904]}
+Current Tree Depth: 550
+{'Entropy': [0.9082, 0.8902]}
+Current Tree Depth: 200
+{'Entropy': [0.9096, 0.8914]}
+Current Tree Depth: 650
+{'Entropy': [0.9084, 0.8902]}
+Current Tree Depth: 300
+{'Entropy': [0.9084, 0.891]}
+Current Tree Depth: 850
+{'Entropy': [0.9086, 0.8904]}
+Current Tree Depth: 750
+{'Entropy': [0.9082, 0.8908]}
+Current Tree Depth: 400
+{'Entropy': [0.9082, 0.8904]}
+Current Tree Depth: 50
+{'Entropy': [0.9112, 0.8912]}
+Current Tree Depth: 500
+{'Entropy': [0.9086, 0.89]}
+Current Tree Depth: 150
+{'Entropy': [0.9098, 0.891]}
+Current Tree Depth: 600
+{'Entropy': [0.9088, 0.8902]}
+Current Tree Depth: 900
+{'Entropy': [0.909, 0.8904]}
+Current Tree Depth: 250
+{'Entropy': [0.9086, 0.8906]}
+Current Tree Depth: 700
+{'Entropy': [0.9086, 0.8902]}
+Current Tree Depth: 350
+{'Entropy': [0.909, 0.8908]}
+
+Subset = 6
+Current Tree Depth: 0
+{'Entropy': [0.8514, 0.817]}
+Current Tree Depth: 800
+{'Entropy': [0.9126, 0.893]}
+Current Tree Depth: 450
+{'Entropy': [0.9136, 0.8924]}
+Current Tree Depth: 100
+{'Entropy': [0.9126, 0.8918]}
+Current Tree Depth: 950
+{'Entropy': [0.9126, 0.8924]}
+Current Tree Depth: 550
+{'Entropy': [0.9122, 0.8932]}
+Current Tree Depth: 200
+{'Entropy': [0.914, 0.8928]}
+Current Tree Depth: 650
+{'Entropy': [0.9124, 0.893]}
+Current Tree Depth: 300
+{'Entropy': [0.9138, 0.8934]}
+Current Tree Depth: 850
+{'Entropy': [0.9126, 0.8926]}
+Current Tree Depth: 750
+{'Entropy': [0.9128, 0.8932]}
+Current Tree Depth: 400
+{'Entropy': [0.913, 0.8926]}
+Current Tree Depth: 50
+{'Entropy': [0.915, 0.8892]}
+Current Tree Depth: 500
+{'Entropy': [0.9132, 0.8926]}
+Current Tree Depth: 150
+{'Entropy': [0.9142, 0.8914]}
+Current Tree Depth: 600
+{'Entropy': [0.9124, 0.8926]}
+Current Tree Depth: 900
+{'Entropy': [0.913, 0.8926]}
+Current Tree Depth: 250
+{'Entropy': [0.9144, 0.8932]}
+Current Tree Depth: 700
+{'Entropy': [0.9124, 0.893]}
+Current Tree Depth: 350
+{'Entropy': [0.913, 0.8936]}
+

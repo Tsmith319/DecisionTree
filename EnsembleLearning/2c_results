@@ -1,0 +1,8 @@
+General Bias, General Variance, and General Error for Training Data on predictors: 
+Bias: 0.0594655953251 Variance: 0.0839628926224 General Error: 0.143428487947
+General Bias, General Variance, and General Error for Testing Data on predictors: 
+Bias: 0.0870837107378 Variance: 0.0860242512783 General Error: 0.173107962016
+General Bias, General Variance, and General Error for Training Data on single tree: 
+Bias: 0.1364 Variance: 0.0 General Error: 0.1364
+General Bias, General Variance, and General Error for Testing Data on single tree: 
+Bias: 0.1564 Variance: 0.0 General Error: 0.1564
