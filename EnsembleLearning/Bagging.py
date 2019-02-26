@@ -348,14 +348,15 @@ def calculateSplitValueWithGiniIndex(S, attributes, attributeValues, labels):
 		totalAttributeGiniIndex = 0
 		for attributeVal in attributeValues[attribute]:
 			attributeValLabelCounts = {}
+			index = 0
 			for example in S:
 				if example[attribute] == attributeVal:
-					indexOfLabel = S.index(example)
-					currLabel = labels[indexOfLabel]
+					currLabel = labels[index]
 					if currLabel in attributeValLabelCounts:
 						attributeValLabelCounts[currLabel] = attributeValLabelCounts[currLabel] + 1
 					else:
 						attributeValLabelCounts[currLabel] = 1
+				index += 1
 
 			totalLabelCount = 0
 			attributeValGiniIndex = 0
