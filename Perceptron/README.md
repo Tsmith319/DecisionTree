@@ -7,18 +7,27 @@ Running Standard Perceptron Algorithm
  
 Results:
 Training Errors
+
 0.0299311926606
+
 Testing Errors
+
 0.0334
+
 Vector
+
 [-0.568142709999999, -0.3368749999999993, -0.45038459999999997, -0.14443598000000016, 0.5300000000000002]
  
 Running Voting Perceptron Algorithm
  
 Results:
+
 Training Errors
+
 0.0207568807339
+
 Testing Errors
+
 0.0182
 
 Vectors
@@ -496,14 +505,21 @@ Counts
 15
 23
 91
+
 Total Vectors: 235 Total Counts: 235
  
 Running Average Perceptron Algorithm
  
 Results:
+
 Training Errors
+
 0.0207568807339
+
 Testing Errors
+
 0.0182
+
 Vector
+
 [-3509.3560151900942, -2236.661601699971, -2298.4693760000323, -695.0220577800121, 2707.340000000091]
