@@ -52,8 +52,8 @@ def stochastic_sgd(data,labels,testData,testLabels):
 	C_strings = ["1/873","10/873","50/873","100/873","300/873","500/873","700/873"]
 	c_count = 0;
 	N = 872
-	d = 0.5
-	gamma_o = 0.005
+	d = 1
+	
 
 	for C in C_vals:
 		w = [0,0,0,0,0]
@@ -61,6 +61,7 @@ def stochastic_sgd(data,labels,testData,testLabels):
 		trainingPredictionError = 0
 		testingPredictionError = 0
 		epoch = 1
+		gamma_o = 0.005
 		while epoch != T:
 			shuffData, shuffLabels = shuffleData(data,labels)
 			index = 0
@@ -71,7 +72,7 @@ def stochastic_sgd(data,labels,testData,testLabels):
 				wTx = sum(wTx)
 					
 				w_0 = w[0:4]
-				gamma_t = float(gamma_o)/(float(1 + (float((float(gamma_o)/float(d))*epoch))))
+				gamma_t = float(gamma_o)/(float(1 + (float((float(gamma_o)/float(d))*index))))
 				if (float(y_i) * float(wTx)) <= 1.0:
 					
 					ytCNyi = float(y_i * C * N * gamma_t)

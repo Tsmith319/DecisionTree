@@ -70,7 +70,7 @@ def stochastic_sgd(data,labels,testData,testLabels):
 				wTx = sum(wTx)
 					
 				w_0 = w[0:4]
-				gamma_t = float(gamma_o)/(float(1 + epoch))
+				gamma_t = float(gamma_o)/(float(1 + index))
 				if (float(y_i) * float(wTx)) <= 1.0:
 					
 					ytCNyi = float(y_i * C * N * gamma_t)
