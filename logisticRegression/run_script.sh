@@ -7,6 +7,6 @@ python MAP.py
 echo " "
 echo "Running Stochastic Gradient Descent for MLE"
 echo " "
-python ML.py
+python MLE.py
 echo " "
 echo "Done with script"
